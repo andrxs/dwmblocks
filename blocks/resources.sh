@@ -14,6 +14,6 @@ FREE=`free -m | grep 'Mem:' | awk {'print $4'}`
 
 if [ $FREE -lt 1024 ]; then
     echo "🤯 ${ramusagePerc} MEM"
-    notify-send -u critical Warning "Memory Utilization is High! Free $FREE"  
+#    notify-send -u critical Warning "Memory Utilization is High! Free $FREE"  
 fi
 

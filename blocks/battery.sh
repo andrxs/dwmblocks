@@ -1,9 +1,12 @@
 #!/bin/sh
 
-read -r capacity </sys/class/power_supply/BAT0/capacity
+read -r CAPACITY </sys/class/power_supply/BAT0/capacity
+read -r STATUS </sys/class/power_supply/BAT0/status
 
-echo " 🔋${capacity}% "
+ICON=$(echo $STATUS | sed "s/[Dd]ischarging/🔋/;s/[Nn]ot charging/🛑/;s/[Cc]harging/🔌/;s/[Uu]nknown/♻️/;s/[Ff]ull/⚡/")
 
-if [ "$capacity" -le 25 ] ; then
+echo "$ICON${CAPACITY}%"
+
+if [ "$CAPACITY" -le 25 ] && [ "$ICON" = "🔋" ]; then
     notify-send -u critical "Battery level is critical!"    
 fi
