@@ -17,3 +17,6 @@ if [ $FREE -lt 1024 ]; then
 #    notify-send -u critical Warning "Memory Utilization is High! Free $FREE"  
 fi
 
+# comment
+# comment 
+
